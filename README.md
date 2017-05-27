@@ -146,6 +146,10 @@ With your endpoint working and issuing tokens, you can protect your API controll
 ````
 The `OAuth` attribute has a single optional parameter, `Realm`, which allows you to define which realm this controller is associated with. If a realm is configured, only access tokens that were generated from the associated endpoint will be valid.
 
+Reference the `OAuth` attribute corresponding to yout controller type. `Our.Umbraco.AuthU.Web.WebApi` should be used for UmbracoApiControllers and `Our.Umbraco.AuthU.Web.Mvc` should be used for plain MVC controllers. 
+
+Remember to reference `System.Web.Http` and not `System.Web.Mvc`. The latter will cause silent failure without HTTP authorization challenges.
+
 ### Accessing Protected Actions
 To access a protected action, an `Authorization` header should be added to the request with a value of `Bearer {access_token}` were `{access_token}` is the value of the access token requested from the authentication endpoint.
 
@@ -168,6 +172,6 @@ Anyone and everyone is welcome to contribute. Please take a moment to review the
 
 ## License
 
-Copyright &copy; 2017 Matt Brialsford, Outfield Digital Ltd 
+Copyright &copy; 2017 Matt Brailsford, Outfield Digital Ltd 
 
 Licensed under the [MIT License](LICENSE.md)
